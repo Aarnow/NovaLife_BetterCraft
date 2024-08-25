@@ -78,7 +78,7 @@ namespace BetterCraft
 
         public void BetterRecipeCreateOrUpdatePanel(Player player, Recipe recipe)
         {
-            Panel panel = PanelHelper.Create("Ajouter une recette", UIPanel.PanelType.TabPrice, player, () => BetterRecipeCreateOrUpdatePanel(player, recipe));
+            Panel panel = PanelHelper.Create("Ajouter/Modifier une recette", UIPanel.PanelType.TabPrice, player, () => BetterRecipeCreateOrUpdatePanel(player, recipe));
             
             panel.AddTabLine($"{recipe.Name}", $"{mk.Size(recipe.Category, 14)}", recipe.IsVehicle ? vehicleId : ItemUtils.GetIconIdByItemId(objectId), _ =>
             {
@@ -145,12 +145,12 @@ namespace BetterCraft
                         player.Notify("BetterCraft", "ID incorrect", Life.NotificationManager.Type.Warning);
                         return Task.FromResult(false);
                     }
-                    if (recipe.IsVehicle && recipe.ObjectId > Nova.v.vehicleModels.Length)
+                    if (recipe.IsVehicle && Nova.v.GetVehicleByModelId(recipe.ObjectId) == null)
                     {
                         player.Notify("BetterCraft", "ID de voiture inexistant", Life.NotificationManager.Type.Warning);
                         return Task.FromResult(false);
                     }
-                    else if(!recipe.IsVehicle && recipe.ObjectId > Nova.man.item.items.Length)
+                    else if(!recipe.IsVehicle && Nova.man.item.GetItem(recipe.ObjectId) == null)
                     {
                         player.Notify("BetterCraft", "ID de l'objet inexistant", Life.NotificationManager.Type.Warning);
                         return Task.FromResult(false);
@@ -198,7 +198,7 @@ namespace BetterCraft
                         player.Notify("BetterCraft", "ID incorrect", Life.NotificationManager.Type.Warning);
                         return Task.FromResult(false);
                     }
-                    if (ingredient.ItemId > Nova.man.item.items.Length)
+                    if (!recipe.IsVehicle && Nova.man.item.GetItem(recipe.ObjectId) == null)
                     {
                         player.Notify("BetterCraft", "ID de l'objet inexistant", Life.NotificationManager.Type.Warning);
                         return Task.FromResult(false);
