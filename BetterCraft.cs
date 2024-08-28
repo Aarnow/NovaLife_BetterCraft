@@ -6,6 +6,7 @@ using ModKit.Helper.CraftHelper;
 using ModKit.Interfaces;
 using ModKit.Internal;
 using ModKit.Utils;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using _menu = AAMenu.Menu;
@@ -15,8 +16,8 @@ namespace BetterCraft
 {
     public class BetterCraft : ModKit.ModKit
     {
-        public int objectId = 1231;
-        public int vehicleId = IconUtils.Vehicles.C4Blue.Id;
+        public int objectId = 1231; //carton désignant un objet
+        public int vehicleId = IconUtils.Vehicles.C4Blue.Id; //c4 désignant un véhicule
         public BetterCraft(IGameAPI api) : base(api)
         {
             PluginInformations = new PluginInformations(AssemblyHelper.GetName(), "1.0.0", "Aarnow");
@@ -28,7 +29,7 @@ namespace BetterCraft
             InsertMenu();
             Logger.LogSuccess($"{PluginInformations.SourceName} v{PluginInformations.Version}", "initialisé");
         }
-        
+
         public void InsertMenu()
         {
             _menu.AddAdminTabLine(PluginInformations, 5, "BetterRecipe", (ui) =>
@@ -145,7 +146,7 @@ namespace BetterCraft
                         player.Notify("BetterCraft", "ID incorrect", Life.NotificationManager.Type.Warning);
                         return Task.FromResult(false);
                     }
-                    if (recipe.IsVehicle && Nova.v.GetVehicleByModelId(recipe.ObjectId) == null)
+                    if (recipe.IsVehicle && Nova.v.vehicleModels[recipe.ObjectId] == null)
                     {
                         player.Notify("BetterCraft", "ID de voiture inexistant", Life.NotificationManager.Type.Warning);
                         return Task.FromResult(false);
