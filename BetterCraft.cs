@@ -6,7 +6,6 @@ using ModKit.Helper.CraftHelper;
 using ModKit.Interfaces;
 using ModKit.Internal;
 using ModKit.Utils;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using _menu = AAMenu.Menu;
@@ -17,7 +16,7 @@ namespace BetterCraft
     public class BetterCraft : ModKit.ModKit
     {
         public int objectId = 1231; //carton désignant un objet
-        public int vehicleId = IconUtils.Vehicles.C4Blue.Id; //c4 désignant un véhicule
+        public int vehicleId = IconUtils.Vehicles.C4GrandPicasso.Id; //c4 désignant un véhicule
         public BetterCraft(IGameAPI api) : base(api)
         {
             PluginInformations = new PluginInformations(AssemblyHelper.GetName(), "1.0.0", "Aarnow");
@@ -76,7 +75,6 @@ namespace BetterCraft
 
             panel.Display();
         }
-
         public void BetterRecipeCreateOrUpdatePanel(Player player, Recipe recipe)
         {
             Panel panel = PanelHelper.Create("Ajouter/Modifier une recette", UIPanel.PanelType.TabPrice, player, () => BetterRecipeCreateOrUpdatePanel(player, recipe));
@@ -119,12 +117,12 @@ namespace BetterCraft
 
             panel.Display();
         }
-
         public void BetterRecipePropertiesPanel(Player player, Recipe recipe)
         {
             Panel panel = PanelHelper.Create("Définir les propriétés de la recette", UIPanel.PanelType.Input, player, () => BetterRecipePropertiesPanel(player, recipe));
 
             panel.TextLines.Add("Respecter le format (cf. doc)");
+            panel.TextLines.Add("= 0 objet / 1 = véhicule");
             panel.TextLines.Add("[0 ou 1] [ID] [CATEGORIE]");
 
             panel.inputPlaceholder = "exemple: 0 95 fast-food";
@@ -172,7 +170,6 @@ namespace BetterCraft
 
             panel.Display();
         }
-
         public void BetterRecipeCreateIngredientPanel(Player player, Recipe recipe)
         {
             Panel panel = PanelHelper.Create("Ajouter un ingrédient", UIPanel.PanelType.Input, player, () => BetterRecipeCreateIngredientPanel(player, recipe));
