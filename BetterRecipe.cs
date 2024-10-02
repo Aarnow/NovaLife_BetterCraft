@@ -41,7 +41,7 @@ namespace BetterCraft
         {
             var query = await CraftHelper.GetRecipes();
 
-            Panel panel = PanelHelper.Create("Liste des recettes", UIPanel.PanelType.TabPrice, player, () => BetterRecipePanel(player));
+            Panel panel = PanelHelper.Create("BetterRecipe - Liste des recettes", UIPanel.PanelType.TabPrice, player, () => BetterRecipePanel(player));
 
             if (query != null && query.Count > 0)
             {
@@ -66,10 +66,7 @@ namespace BetterCraft
                 recipe.IsVehicle = false;
                 BetterRecipeCreateOrUpdatePanel(player, recipe);
             });
-            panel.AddButton("Retour", ui =>
-            {
-                AAMenu.AAMenu.menu.AdminPanel(player, AAMenu.AAMenu.menu.AdminTabLines);
-            });
+            panel.AddButton("Retour", _ => AAMenu.AAMenu.menu.AdminPluginPanel(player, AAMenu.AAMenu.menu.AdminPluginTabLines));
             panel.CloseButton();
 
             panel.Display();

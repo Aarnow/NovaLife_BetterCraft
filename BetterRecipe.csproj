@@ -7,8 +7,8 @@
     <ProjectGuid>{071A1A82-8D70-45BE-AD3F-E9E1172DE257}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetterCraft</RootNamespace>
-    <AssemblyName>BetterCraft</AssemblyName>
+    <RootNamespace>BetterRecipe</RootNamespace>
+    <AssemblyName>BetterRecipe</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
