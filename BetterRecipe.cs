@@ -66,7 +66,7 @@ namespace BetterCraft
                 recipe.IsVehicle = false;
                 BetterRecipeCreateOrUpdatePanel(player, recipe);
             });
-            panel.AddButton("Retour", _ => AAMenu.AAMenu.menu.AdminPluginPanel(player, AAMenu.AAMenu.menu.AdminPluginTabLines));
+            panel.AddButton("Retour", _ => AAMenu.AAMenu.menu.AdminPluginPanel(player));
             panel.CloseButton();
 
             panel.Display();
