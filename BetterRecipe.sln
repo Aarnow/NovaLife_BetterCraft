@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterCraft", "BetterCraft.csproj", "{071A1A82-8D70-45BE-AD3F-E9E1172DE257}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterRecipe", "BetterRecipe.csproj", "{071A1A82-8D70-45BE-AD3F-E9E1172DE257}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

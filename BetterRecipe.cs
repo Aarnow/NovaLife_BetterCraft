@@ -13,11 +13,10 @@ using mk = ModKit.Helper.TextFormattingHelper;
 
 namespace BetterCraft
 {
-    public class BetterCraft : ModKit.ModKit
+    public class BetterRecipe : ModKit.ModKit
     {
         public int objectId = 1231; //carton désignant un objet
-        public int vehicleId = IconUtils.Vehicles.C4GrandPicasso.Id; //c4 désignant un véhicule
-        public BetterCraft(IGameAPI api) : base(api)
+        public BetterRecipe(IGameAPI api) : base(api)
         {
             PluginInformations = new PluginInformations(AssemblyHelper.GetName(), "1.0.0", "Aarnow");
         }
@@ -31,7 +30,7 @@ namespace BetterCraft
 
         public void InsertMenu()
         {
-            _menu.AddAdminTabLine(PluginInformations, 5, "BetterRecipe", (ui) =>
+            _menu.AddAdminPluginTabLine(PluginInformations, 5, "BetterRecipe", (ui) =>
             {
                 Player player = PanelHelper.ReturnPlayerFromPanel(ui);
                 BetterRecipePanel(player);
@@ -79,7 +78,7 @@ namespace BetterCraft
         {
             Panel panel = PanelHelper.Create("Ajouter/Modifier une recette", UIPanel.PanelType.TabPrice, player, () => BetterRecipeCreateOrUpdatePanel(player, recipe));
             
-            panel.AddTabLine($"{recipe.Name}", $"{mk.Size(recipe.Category, 14)}", recipe.IsVehicle ? vehicleId : ItemUtils.GetIconIdByItemId(objectId), _ =>
+            panel.AddTabLine($"{recipe.Name}", $"{mk.Size(recipe.Category, 14)}", recipe.IsVehicle ? IconUtils.Vehicles.C4GrandPicasso.Id : ItemUtils.GetIconIdByItemId(objectId), _ =>
             {
                 BetterRecipePropertiesPanel(player, recipe);
             });
