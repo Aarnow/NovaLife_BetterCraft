@@ -18,7 +18,7 @@ namespace BetterCraft
         public int objectId = 1231; //carton désignant un objet
         public BetterRecipe(IGameAPI api) : base(api)
         {
-            PluginInformations = new PluginInformations(AssemblyHelper.GetName(), "1.0.0", "Aarnow");
+            PluginInformations = new PluginInformations(AssemblyHelper.GetName(), "1.0.2", "Aarnow");
         }
 
         public override void OnPluginInit()
